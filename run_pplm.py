@@ -65,6 +65,10 @@ BAG_OF_WORDS_ARCHIVE_MAP = {
     'science': "https://s3.amazonaws.com/models.huggingface.co/bert/pplm/bow/science.txt",
     'space': "https://s3.amazonaws.com/models.huggingface.co/bert/pplm/bow/space.txt",
     'technology': "https://s3.amazonaws.com/models.huggingface.co/bert/pplm/bow/technology.txt",
+    'world': './world.txt',
+    'business': './business.txt',
+    'sports': './sports.txt',
+    'sci_tech': './sci_tech.txt',
 }
 
 DISCRIMINATOR_MODELS_PARAMS = {
@@ -793,11 +797,11 @@ def run_pplm_example(
     # untokenize unperturbed text
     unpert_gen_text = tokenizer.decode(unpert_gen_tok_text.tolist()[0])
 
-    if verbosity_level >= REGULAR:
-        print("=" * 80)
-    print("= Unperturbed generated text =")
-    print(unpert_gen_text)
-    print()
+    # if verbosity_level >= REGULAR:
+    #     print("=" * 80)
+    # print("= Unperturbed generated text =")
+    # print(unpert_gen_text)
+    # print()
 
     generated_texts = []
 
@@ -831,9 +835,9 @@ def run_pplm_example(
             else:
                 pert_gen_text = tokenizer.decode(pert_gen_tok_text.tolist()[0])
 
-            print("= Perturbed generated text {} =".format(i + 1))
-            print(pert_gen_text)
-            print()
+            # print("= Perturbed generated text {} =".format(i + 1))
+            # print(pert_gen_text)
+            # print()
         except:
             pass
 
@@ -842,7 +846,7 @@ def run_pplm_example(
             (tokenized_cond_text, pert_gen_tok_text, unpert_gen_tok_text)
         )
 
-    return
+    return pert_gen_text
 
 
 if __name__ == '__main__':
